@@ -1,51 +1,76 @@
 
-// var canvas = document.getElementById('canvas');
-// var video = document.getElementById('video');
+$(document).ready(function () {
+  var answerBtn = $('.btn-answer');
+  var video = $('.video-obj').get(0);
+  var dot = $('.loading-dot');
+  var phoneAnswer = $('.phone-answer');
+  var loading = true;
+  var loadingContent = '';
 
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
+  var pages = {
+    page1: $('.page-1'),
+    page2: $('.page-2')
+  };
 
-// document.addEventListener('DOMContentLoaded', function(){
-//     var v = video;
-//     canvas = canvas;
-//     var context = canvas.getContext('2d');
-//     var back = document.createElement('canvas');
-//     var backcontext = back.getContext('2d');
+  video.addEventListener('ended', function () {
+    $(video).css({
+      'width': 0,
+      'height': 0
+    });
+  }, false);
 
-//     var cw,ch;
+  answerBtn.on('click', function (e) {
+    e.preventDefault();
 
-//     v.addEventListener('play', function(){
-//         cw = v.clientWidth;
-//         ch = v.clientHeight;
-//         canvas.width = cw;
-//         canvas.height = ch;
-//         back.width = cw;
-//         back.height = ch;
-//         draw(v,context,backcontext,cw,ch);
-//     },false);
+    phoneAnswer.addClass('connect');
 
-// },false);
+    loading = false;
 
-// function draw(v,c,bc,w,h) {
-//     if(v.paused || v.ended) return false;
-//     // First, draw it into the backing canvas
-//     bc.drawImage(v,0,0,w,h);
-//     // Grab the pixel data from the backing canvas
-//     var idata = bc.getImageData(0,0,w,h);
-//     var data = idata.data;
-//     // Loop through the pixels, turning them grayscale
-//     for(var i = 0; i < data.length; i+=4) {
-//         var r = data[i];
-//         var g = data[i+1];
-//         var b = data[i+2];
-//         var brightness = (3*r+4*g+b)>>>3;
-//         data[i] = brightness;
-//         data[i+1] = brightness;
-//         data[i+2] = brightness;
-//     }
-//     idata.data = data;
-//     // Draw the pixels onto the visible canvas
-//     c.putImageData(idata,0,0);
-//     // Start over!
-//     setTimeout(function(){ draw(v,c,bc,w,h); }, 0);
-// }
+    video && video.play();
+
+    var loop = true;
+
+    function check () {
+      if (!video.played || (video.played.length > 0 && loop)) {
+        pages.page1.hide();
+        pages.page2.addClass('visible');
+        $(document.body).css('background-color', '#000');
+
+        phoneAnswer.removeClass('connect');
+        loop = false;
+      }
+      if (!loop) {
+        return;
+      }
+      setTimeout(function () {
+        check();
+      }, 50);
+    }
+    check();
+  });
+
+  /** 
+   * start
+   */
+  if (loading) {
+    loadingFn();
+  }
+
+  /**
+   * functions 
+   */
+
+  function loadingFn () {
+    if (!loading) {
+      return;
+    }
+    if (loadingContent.length === 5) {
+      loadingContent = '';
+    }
+    dot.text(loadingContent);
+    loadingContent += '.';
+    setTimeout(function () {
+      loadingFn();
+    }, 600);
+  }
+})

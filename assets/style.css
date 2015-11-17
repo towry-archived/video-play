@@ -3,3 +3,206 @@
   padding: 0;
   margin: 0;
 }
+
+body {
+  font-family: Arial;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+body, html, #app, .page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.pages {
+  position: relative;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.page-call {
+  color: #fff;
+  background: url('./bg_vcall.jpg') no-repeat 0px 0px;
+  background-size: cover;
+  position: relative;
+}
+
+.avatar {
+  display: block;
+  float: left;
+  width: 66px;
+  height: 66px;
+  background-position: 0 -200px;
+}
+
+.sp {
+  background-image: url('./sp.png');
+  background-size: 400px 400px;
+}
+
+.btn-answer {
+  display: block;
+  width: 75px;
+  height: 72px;
+  background-position: -100px -250px;
+  padding-bottom: 10px;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  margin: 0 auto;
+}
+
+.connect .btn-answer {
+  background-position: 2px -299px;
+}
+.info-hide {
+  display: none;
+}
+.connect .info-text {
+  display: none;
+}
+.connect .info-hide {
+  display: inline;
+}
+
+.remind.sp {
+  background-position: -100px -200px;
+}
+.message.sp {
+  background-position: -150px -200px;
+}
+
+.col .icon {
+  display: block;
+  width: 21px;
+  height: 21px;
+  margin: 0 auto;
+  padding-bottom: 8px;
+}
+
+.p-head {
+  overflow: hidden;
+}
+
+.p-head,
+.p-foot {
+  padding: 25px;
+}
+
+.p-head .nickname {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.8;
+}
+
+.side-info {
+  padding-left: 15px;
+  overflow: hidden;
+}
+
+.row {
+  overflow: hidden;
+}
+
+.col {
+  float: left;
+  width: 50%;
+}
+
+.p-foot .col {
+  text-align: center;
+}
+
+.p-foot .phone-answer {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.p-foot {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+}
+
+.page-1 {
+  z-index: 2;
+}
+
+.page-2 {
+  z-index: 1;
+}
+
+.videobox {
+  visibility: hidden;
+  position: absolute;
+/*  top: 50%;
+  left: 50%;*/
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 8;
+/*  width: 320px;
+  height: 504px;
+  margin: -252px 0 0 -160px;
+  */
+
+  overflow: hidden;
+}
+
+.visible .videobox {
+  visibility: visible;
+}
+
+.video-obj {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  font-size: 100%;
+  line-height: 0;
+  vertical-align: baseline;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+@media (min-width: 100px) {
+  .pages {
+    width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pages {
+    width: 100%;
+  }
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: .85;
+  z-index: 9999;
+}
+
+video {
+  transition: width 1s ease-out, height 1s ease-out;
+  -webkit-transition: width 1s ease-out, height 1s ease-out;
+}

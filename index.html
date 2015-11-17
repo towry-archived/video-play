@@ -4,14 +4,46 @@
   <title>video-play</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
   <div id="app">
-    <video id="video" src="./assets/v3.mp4" height="100%" width="100%" autoplay>
-      
-    </video>
-    <canvas id="canvas">
-    </canvas>
+    <div class="log"></div>
+    <div class="pages">
+      <div class="page page-1 page-call">
+        <div class="p-head">
+          <div class="avatar sp"></div>
+          <div class="side-info">
+            <span class="nickname">吴亦凡</span>
+            <span class="invite-load">邀请你视频聊天<i class="loading-dot">....</i></span>
+          </div>
+        </div>
+        <div class="p-foot">
+          <div class="row">
+            <div class="col">
+              <span class="icon remind sp"></span>
+              <span>提醒我</span>
+            </div>
+            <div class="col">
+              <span class="icon message sp"></span>
+              <span>信息</span>
+            </div>
+          </div>
+          <div class="row phone-answer">
+            <a href="#" class="icon btn-answer sp">
+            </a>
+            <span class="info-text">接听</span>
+            <span class="info-hide">拒绝</span>
+          </div>
+        </div>
+      </div>
+      <div class="page page-2 page-video">
+        <div class="videobox">
+          <video class="video-obj" src="./assets/v3.mp4#t=0," preload="auto" webkit-playsinline="true" x-webkit-airplay="true"></video>
+        </div>
+        <div class="overlay"></div>
+      </div>
+    </div>
   </div>
 
   <script src="assets/app.js"></script>
