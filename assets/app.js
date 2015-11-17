@@ -19,6 +19,10 @@ $(document).ready(function () {
     });
   }, false);
 
+  video.addEventListener('loadedmetadata', function() {
+    this.currentTime = 1;
+  }, false);
+
   answerBtn.on('click', function (e) {
     e.preventDefault();
 
@@ -32,6 +36,8 @@ $(document).ready(function () {
 
     function check () {
       if (!video.played || (video.played.length > 0 && loop)) {
+        $('audio').get(0).pause();
+        $('audio').get(0).currentTime = 0;
         pages.page1.hide();
         pages.page2.addClass('visible');
         $(document.body).css('background-color', '#000');
