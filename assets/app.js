@@ -13,10 +13,7 @@ $(document).ready(function () {
   };
 
   video.addEventListener('ended', function () {
-    $(video).css({
-      'width': 0,
-      'height': 0
-    });
+    // pass
   }, false);
 
   video.addEventListener('loadedmetadata', function() {
@@ -40,7 +37,7 @@ $(document).ready(function () {
         $('audio').get(0).currentTime = 0;
         pages.page1.hide();
         pages.page2.addClass('visible');
-        $(document.body).css('background-color', '#000');
+        $(document.body).css('background-color', '#fff');
 
         phoneAnswer.removeClass('connect');
         loop = false;
